@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
 } from "react-native";
-import { Button } from "react-native-elements";
+
 import InputComponent from "./components/InputComponent";
 import ButtonComponent from "./components/ButtonComponent";
 
@@ -22,6 +22,10 @@ export default class App extends Component {
   }
   handleOnChangeText = name => text => {
     this.setState({ ...this.state, [name]: text });
+  };
+
+  handleOnPress = () => {
+    console.log("Clicked!");
   };
   render() {
     const { email, password, errors, loading } = this.state;
@@ -46,7 +50,11 @@ export default class App extends Component {
           handleOnChange={this.handleOnChangeText("password")}
         />
 
-        <ButtonComponent title="Login" />
+        <ButtonComponent
+          title="Login"
+          activeOpacity={0.9}
+          handleOnPress={this.handleOnPress}
+        />
       </KeyboardAvoidingView>
     );
   }
